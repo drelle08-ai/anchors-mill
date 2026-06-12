@@ -46,7 +46,6 @@ const POD_PRODUCTS = [
 
 export function PrintOnDemand() {
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set())
-  const [cartCount, setCartCount] = useState(0)
 
   const handleAddToCart = (productId: string) => {
     setSelectedProducts(prev => {
@@ -58,7 +57,6 @@ export function PrintOnDemand() {
       }
       return newSet
     })
-    setCartCount(prev => prev + 1)
   }
 
   return (
