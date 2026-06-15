@@ -191,16 +191,16 @@ export function PrintOnDemand() {
       {/* Integration Notes */}
       <div className="border-t border-khaki/10 pt-16 bg-gray-900/30 p-8 rounded-none border border-khaki/20">
         <h3 className="text-2xl font-serif font-light text-primary-50 mb-4">
-          Gelato Integration Status
+          Printify Integration Status
         </h3>
         <p className="text-primary-300 font-light leading-relaxed mb-6">
-          ✓ Live integration with Gelato API. Products are fetched in real-time with automatic {Math.round((MARKUP_MULTIPLIER - 1) * 100)}% markup pricing. All orders sync automatically with Gelato for production and fulfillment.
+          ✓ Live integration with Printify API. Products are fetched in real-time with automatic {Math.round((MARKUP_MULTIPLIER - 1) * 100)}% markup pricing. All orders sync automatically with Printify for production and fulfillment.
         </p>
         <div className="space-y-2 text-sm text-primary-400 font-light">
-          <p>✅ Real-time product catalog from Gelato</p>
+          <p>✅ Real-time product catalog from Printify</p>
           <p>💰 Automatic {Math.round((MARKUP_MULTIPLIER - 1) * 100)}% markup applied to base pricing</p>
-          <p>📦 Automated order fulfillment via Gelato API</p>
-          <p>🚚 Inventory managed by Gelato</p>
+          <p>📦 Automated order fulfillment via Printify API</p>
+          <p>🚚 Inventory managed by Printify</p>
         </div>
       </div>
     </div>
