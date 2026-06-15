@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import { GelatoApi } from 'gelato-api'
 
 interface ProductCard {
   id: string
@@ -12,9 +11,9 @@ interface ProductCard {
 }
 
 const MARKUP_MULTIPLIER = 2.5
-const DEFAULT_BASE_PRICE = 12
+const DEFAULT_BASE_PRICE = 15
 
-// Fallback mock products for when Gelato API is unavailable
+// Fallback mock products for when Printify API is unavailable
 const FALLBACK_PRODUCTS: ProductCard[] = [
   {
     id: 'tshirt-1',
@@ -57,70 +56,94 @@ const FALLBACK_PRODUCTS: ProductCard[] = [
 
 export async function GET() {
   try {
-    const apiKey = process.env.NEXT_PUBLIC_GELATO_API_KEY
+    const apiKey = process.env.PRINTIFY_API_KEY
 
     if (!apiKey) {
-      console.warn('Gelato API key not configured, using fallback products')
+      console.warn('Printify API key not configured, using fallback products')
       return NextResponse.json({ products: FALLBACK_PRODUCTS })
     }
 
-    // Initialize Gelato client with API key
-    const gelato = new GelatoApi({ apiKey })
+    // Get Printify shop ID and catalog
+    const shopsResponse = await fetch('https://api.printify.com/v1/shops.json', {
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+      },
+    })
 
-    // Get the first catalog
-    const catalogs = await gelato.products.getCatalogs({ limit: 1 })
-    const firstCatalog = catalogs.data?.[0]
+    if (!shopsResponse.ok) {
+      throw new Error(`Printify shops error: ${shopsResponse.statusText}`)
+    }
 
-    if (!firstCatalog?.catalogUid) {
-      console.warn('No Gelato catalogs found, using fallback products')
+    const shopsData = await shopsResponse.json()
+    const shops = shopsData.data || []
+
+    if (shops.length === 0) {
+      console.warn('No Printify shops found, using fallback products')
       return NextResponse.json({ products: FALLBACK_PRODUCTS })
     }
 
-    // Get products from the first catalog
-    const productsResponse = await gelato.products.getProductsInCatalog(
-      firstCatalog.catalogUid,
-      { limit: 12, offset: 0 }
+    const shopId = shops[0].id
+
+    // Get Printify catalogs
+    const catalogsResponse = await fetch(
+      `https://api.printify.com/v1/catalogs.json`,
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
+      }
     )
 
-    const gelatoProducts = productsResponse.products || []
+    if (!catalogsResponse.ok) {
+      throw new Error(`Printify catalogs error: ${catalogsResponse.statusText}`)
+    }
 
-    if (gelatoProducts.length === 0) {
-      console.warn('No products in Gelato catalog, using fallback products')
+    const catalogsData = await catalogsResponse.json()
+    const catalogs = catalogsData.data || []
+
+    if (catalogs.length === 0) {
+      console.warn('No Printify catalogs found, using fallback products')
       return NextResponse.json({ products: FALLBACK_PRODUCTS })
     }
 
-    // Fetch pricing for all products at once (more efficient than individual calls)
-    const productUids = gelatoProducts.slice(0, 12).map((p: any) => p.productUid)
-    let pricesMap: { [key: string]: number } = {}
+    const catalogId = catalogs[0].id
 
-    try {
-      // Get pricing for each product
-      for (const uid of productUids) {
-        const prices = await gelato.products.getPrices(uid)
-        pricesMap[uid] = prices?.[0]?.price || DEFAULT_BASE_PRICE
+    // Get products from the catalog
+    const productsResponse = await fetch(
+      `https://api.printify.com/v1/catalogs/${catalogId}/products.json?limit=12`,
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+        },
       }
-    } catch (err) {
-      console.warn('Error fetching prices from Gelato:', err)
-      // Fall back to default pricing if price API fails
-      productUids.forEach((uid: string) => {
-        pricesMap[uid] = DEFAULT_BASE_PRICE
-      })
+    )
+
+    if (!productsResponse.ok) {
+      throw new Error(`Printify products error: ${productsResponse.statusText}`)
     }
 
-    // Transform Gelato products to our format
-    const transformedProducts: ProductCard[] = gelatoProducts
+    const productsData = await productsResponse.json()
+    const printifyProducts = productsData.data || []
+
+    if (printifyProducts.length === 0) {
+      console.warn('No products in Printify catalog, using fallback products')
+      return NextResponse.json({ products: FALLBACK_PRODUCTS })
+    }
+
+    // Transform Printify products to our format
+    const transformedProducts: ProductCard[] = printifyProducts
       .slice(0, 12)
-      .map((product: any, index: number) => {
-        const basePrice = pricesMap[product.productUid] || DEFAULT_BASE_PRICE
+      .map((product: any) => {
+        const basePrice = product.price?.amount || DEFAULT_BASE_PRICE
         const markupPrice = Math.round(basePrice * MARKUP_MULTIPLIER * 100) / 100
-        const productName = product.attributes?.type || `Product ${index + 1}`
 
         return {
-          id: product.productUid,
-          name: productName,
+          id: product.id,
+          name: product.title || 'Product',
           basePrice,
           markupPrice,
           image:
+            product.images?.[0]?.src ||
             'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=600&fit=crop',
           colors: ['Black', 'White', 'Navy', 'Grey'],
           sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
@@ -129,7 +152,7 @@ export async function GET() {
 
     return NextResponse.json({ products: transformedProducts })
   } catch (error) {
-    console.warn('Error fetching from Gelato API, using fallback products:', error)
+    console.warn('Error fetching from Printify API, using fallback products:', error)
     // Return fallback products instead of error
     return NextResponse.json({ products: FALLBACK_PRODUCTS })
   }
