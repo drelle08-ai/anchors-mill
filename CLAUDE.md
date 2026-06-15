@@ -155,7 +155,10 @@ npm run dev
 
 ## Environment Variables
 
-Currently none required - all configuration is static.
+**NEXT_PUBLIC_GELATO_API_KEY** - Your Gelato API credentials (format: `api_key:password`)
+- Added to Vercel production environment
+- Used by PrintOnDemand component to fetch real products
+- Must be added to `.env.local` for local development
 
 ## Accessibility
 
@@ -189,14 +192,17 @@ All product images currently use URLs from:
 
 ## Future Enhancements
 
-### Printify Integration (Ready When Needed)
-The POD section is **structurally ready** for Printify API integration:
-1. Get Printify API key
-2. Add to environment variables
-3. Connect API in `components/PrintOnDemand.tsx`
-4. Implement order auto-sync
+### Gelato Integration (Live)
+✅ **Active Gelato API integration:**
+- Real-time product catalog fetching
+- Automatic 150% markup pricing
+- Error handling and loading states
 
-**Current placeholder:** 4 sample products with static pricing
+**Next phase:**
+1. Implement shopping cart with order creation
+2. Connect Gelato order API for checkout
+3. Add order tracking and status updates
+4. Test full end-to-end fulfillment flow
 
 ### E-Commerce
 - Real shopping cart implementation

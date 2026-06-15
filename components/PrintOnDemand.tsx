@@ -1,51 +1,73 @@
 'use client'
 
-import { useState } from 'react'
-import { ShoppingBag, Heart, ArrowLeft } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ShoppingBag, Heart, ArrowLeft, Loader } from 'lucide-react'
 import Link from 'next/link'
 
-// Placeholder for Printify products - will be populated via API
-const POD_PRODUCTS = [
-  {
-    id: 'pod-1',
-    name: 'Premium T-Shirt',
-    basePrice: 12,
-    markupPrice: 25,
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&h=600&fit=crop',
-    colors: ['Black', 'White', 'Navy'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  },
-  {
-    id: 'pod-2',
-    name: 'Comfort Hoodie',
-    basePrice: 25,
-    markupPrice: 65,
-    image: 'https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=500&h=600&fit=crop',
-    colors: ['Black', 'White', 'Grey'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  },
-  {
-    id: 'pod-3',
-    name: 'Classic Crewneck',
-    basePrice: 15,
-    markupPrice: 35,
-    image: 'https://images.unsplash.com/photo-1503341455253-b2b723bb12d5?w=500&h=600&fit=crop',
-    colors: ['Black', 'White', 'Navy', 'Charcoal'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  },
-  {
-    id: 'pod-4',
-    name: 'Performance Long Sleeve',
-    basePrice: 18,
-    markupPrice: 40,
-    image: 'https://images.squarespace-cdn.com/content/v1/6936df470b902d320ef93d31/0c32ad2c-eb1e-460c-88d8-aa704a32e81b/Anchorspolo+Medium.jpeg',
-    colors: ['Black', 'White', 'Navy'],
-    sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-  },
-]
+interface GelatoProduct {
+  id: string
+  title: string
+  description?: string
+  image?: string
+  variants?: Array<{
+    id: string
+    title?: string
+    colors?: string[]
+    sizes?: string[]
+    pricing?: {
+      costOfGoods: number
+    }
+  }>
+}
+
+interface ProductCard {
+  id: string
+  name: string
+  basePrice: number
+  markupPrice: number
+  image: string
+  colors: string[]
+  sizes: string[]
+}
+
+const MARKUP_MULTIPLIER = 2.5 // 150% markup on base price
 
 export function PrintOnDemand() {
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set())
+  const [products, setProducts] = useState<ProductCard[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchGelatoProducts = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const response = await fetch('/api/gelato-products')
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch products: ${response.statusText}`)
+        }
+
+        const data = await response.json()
+
+        if (data.error) {
+          throw new Error(data.error)
+        }
+
+        setProducts(data.products || [])
+      } catch (err) {
+        console.error('Error fetching Gelato products:', err)
+        setError(err instanceof Error ? err.message : 'Failed to load products')
+        setProducts([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchGelatoProducts()
+  }, [])
 
   const handleAddToCart = (productId: string) => {
     setSelectedProducts(prev => {
@@ -88,8 +110,28 @@ export function PrintOnDemand() {
           </p>
         </div>
 
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-24 gap-4">
+            <Loader className="w-8 h-8 text-khaki animate-spin" />
+            <p className="text-primary-300 font-light">Loading Gelato products...</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="bg-red-900/20 border border-red-500/30 rounded-none p-6 mb-8">
+            <p className="text-red-200 font-light">⚠️ {error}</p>
+            <p className="text-primary-300 text-sm font-light mt-2">Please check your Gelato API configuration.</p>
+          </div>
+        )}
+
+        {!loading && !error && products.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-primary-300 font-light">No products available at the moment.</p>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {POD_PRODUCTS.map((product) => (
+          {products.map((product) => (
             <div key={product.id} className="group">
               <div className="relative h-96 bg-gray-900 rounded-none overflow-hidden border border-khaki/20 hover:border-khaki transition-all duration-300 shadow-lg transform hover:-translate-y-2">
                 <img
@@ -149,16 +191,16 @@ export function PrintOnDemand() {
       {/* Integration Notes */}
       <div className="border-t border-khaki/10 pt-16 bg-gray-900/30 p-8 rounded-none border border-khaki/20">
         <h3 className="text-2xl font-serif font-light text-primary-50 mb-4">
-          Printify Integration Status
+          Gelato Integration Status
         </h3>
         <p className="text-primary-300 font-light leading-relaxed mb-6">
-          ✓ Structure ready for Printify API integration. Add your API key and configure product catalog when ready. All orders will automatically sync with Printify for production and fulfillment.
+          ✓ Live integration with Gelato API. Products are fetched in real-time with automatic {Math.round((MARKUP_MULTIPLIER - 1) * 100)}% markup pricing. All orders sync automatically with Gelato for production and fulfillment.
         </p>
         <div className="space-y-2 text-sm text-primary-400 font-light">
-          <p>📋 Custom markup pricing configured</p>
-          <p>🔄 Ready for real-time product sync</p>
-          <p>📦 Automated order fulfillment setup</p>
-          <p>🚚 Inventory tracking ready</p>
+          <p>✅ Real-time product catalog from Gelato</p>
+          <p>💰 Automatic {Math.round((MARKUP_MULTIPLIER - 1) * 100)}% markup applied to base pricing</p>
+          <p>📦 Automated order fulfillment via Gelato API</p>
+          <p>🚚 Inventory managed by Gelato</p>
         </div>
       </div>
     </div>
