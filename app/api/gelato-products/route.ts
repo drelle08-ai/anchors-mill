@@ -74,43 +74,18 @@ export async function GET() {
       throw new Error(`Printify shops error: ${shopsResponse.statusText}`)
     }
 
-    const shopsData = await shopsResponse.json()
-    const shops = shopsData.data || []
+    const shops = await shopsResponse.json()
 
-    if (shops.length === 0) {
+    if (!Array.isArray(shops) || shops.length === 0) {
       console.warn('No Printify shops found, using fallback products')
       return NextResponse.json({ products: FALLBACK_PRODUCTS })
     }
 
     const shopId = shops[0].id
 
-    // Get Printify catalogs
-    const catalogsResponse = await fetch(
-      `https://api.printify.com/v1/catalogs.json`,
-      {
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-        },
-      }
-    )
-
-    if (!catalogsResponse.ok) {
-      throw new Error(`Printify catalogs error: ${catalogsResponse.statusText}`)
-    }
-
-    const catalogsData = await catalogsResponse.json()
-    const catalogs = catalogsData.data || []
-
-    if (catalogs.length === 0) {
-      console.warn('No Printify catalogs found, using fallback products')
-      return NextResponse.json({ products: FALLBACK_PRODUCTS })
-    }
-
-    const catalogId = catalogs[0].id
-
-    // Get products from the catalog
+    // Get shop products
     const productsResponse = await fetch(
-      `https://api.printify.com/v1/catalogs/${catalogId}/products.json?limit=12`,
+      `https://api.printify.com/v1/shops/${shopId}/products.json?limit=12`,
       {
         headers: {
           Authorization: `Bearer ${apiKey}`,
@@ -119,11 +94,12 @@ export async function GET() {
     )
 
     if (!productsResponse.ok) {
-      throw new Error(`Printify products error: ${productsResponse.statusText}`)
+      console.warn('Printify products endpoint error, using fallback products')
+      return NextResponse.json({ products: FALLBACK_PRODUCTS })
     }
 
     const productsData = await productsResponse.json()
-    const printifyProducts = productsData.data || []
+    const printifyProducts = productsData.data || productsData || []
 
     if (printifyProducts.length === 0) {
       console.warn('No products in Printify catalog, using fallback products')
