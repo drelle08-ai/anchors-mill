@@ -47,31 +47,53 @@ export default function DashboardPage() {
               Welcome, {session?.user?.name || 'User'}!
             </h2>
             <p className="text-primary-300 font-light">
-              Your design collaboration portal is ready. Coming soon: projects,
-              image uploads, and feedback system.
+              Manage your design projects and collaborate on mockups with our team.
             </p>
           </div>
 
-          {/* Placeholder Cards */}
+          {/* Feature Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: 'Projects', icon: '📁', status: 'Coming Soon' },
-              { title: 'Designs', icon: '🎨', status: 'Coming Soon' },
-              { title: 'Feedback', icon: '💬', status: 'Coming Soon' },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-gray-900/50 border border-khaki/20 p-6 hover:border-khaki transition-colors"
-              >
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <h3 className="text-xl font-serif font-light text-primary-50 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-primary-400 text-sm font-light">
-                  {item.status}
-                </p>
-              </div>
-            ))}
+            <a
+              href="/dashboard/projects"
+              className="bg-gray-900/50 border border-khaki/20 p-6 hover:border-khaki transition-colors cursor-pointer group"
+            >
+              <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">📁</div>
+              <h3 className="text-xl font-serif font-light text-primary-50 mb-2 group-hover:text-khaki transition-colors">
+                Projects
+              </h3>
+              <p className="text-primary-400 text-sm font-light">
+                View and manage your design projects
+              </p>
+            </a>
+
+            <div className="bg-gray-900/50 border border-khaki/20 p-6 opacity-50">
+              <div className="text-4xl mb-3">🎨</div>
+              <h3 className="text-xl font-serif font-light text-primary-50 mb-2">
+                Designs
+              </h3>
+              <p className="text-primary-400 text-sm font-light">
+                Phase 3: Upload mockups
+              </p>
+            </div>
+
+            <div className="bg-gray-900/50 border border-khaki/20 p-6 opacity-50">
+              <div className="text-4xl mb-3">💬</div>
+              <h3 className="text-xl font-serif font-light text-primary-50 mb-2">
+                Feedback
+              </h3>
+              <p className="text-primary-400 text-sm font-light">
+                Phase 4: Comment & collaborate
+              </p>
+            </div>
+          </div>
+
+          {/* Quick Info */}
+          <div className="bg-gradient-to-r from-khaki/10 to-transparent border border-khaki/20 p-6 rounded">
+            <h3 className="text-lg font-serif font-light text-primary-50 mb-2">Phase 2 Live ✨</h3>
+            <p className="text-primary-300 font-light text-sm">
+              Project management is now live! Create, edit, and organize your design projects.
+              Upcoming: image uploads, feedback system, and color palette collaboration.
+            </p>
           </div>
         </div>
       </main>
