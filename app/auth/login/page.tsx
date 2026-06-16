@@ -16,17 +16,31 @@ export default function LoginPage() {
     setError('')
     setLoading(true)
 
-    const result = await signIn('credentials', {
-      username,
-      password,
-      redirect: false,
-    })
+    try {
+      const result = await signIn('credentials', {
+        username,
+        password,
+        redirect: false,
+      })
 
-    if (result?.error) {
-      setError('Invalid username or password')
+      console.log('[LOGIN] SignIn result:', result)
+
+      if (result?.error) {
+        console.error('[LOGIN] Auth error:', result.error)
+        setError('Invalid username or password')
+        setLoading(false)
+      } else if (result?.ok) {
+        console.log('[LOGIN] Auth success, redirecting')
+        router.push('/dashboard')
+      } else {
+        console.error('[LOGIN] Unexpected result:', result)
+        setError('Authentication failed')
+        setLoading(false)
+      }
+    } catch (err) {
+      console.error('[LOGIN] Exception:', err)
+      setError('An error occurred')
       setLoading(false)
-    } else if (result?.ok) {
-      router.push('/dashboard')
     }
   }
 
