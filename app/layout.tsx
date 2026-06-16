@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
   title: "Anchor's Mill - Premium Apparel",
@@ -23,7 +24,9 @@ export default function RootLayout({
         <meta name="theme-color" content="#BE185D" />
       </head>
       <body className="bg-primary-50">
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )
