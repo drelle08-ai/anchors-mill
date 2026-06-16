@@ -17,17 +17,6 @@ export const { handlers, auth } = NextAuth({
             return null
           }
 
-          // Temporary: hardcode test user to verify auth flow works
-          if (credentials.username === 'testuser' && credentials.password === 'test123') {
-            return {
-              id: '1',
-              email: 'test@example.com',
-              name: 'Test User',
-              image: null,
-            }
-          }
-
-          // Normal flow: lookup user in database
           const user = await prisma.user.findUnique({
             where: { username: String(credentials.username) },
           })
