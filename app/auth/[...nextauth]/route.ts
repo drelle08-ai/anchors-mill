@@ -1,3 +1,5 @@
 import { handlers } from '@/lib/auth'
 
-export const { GET, POST } = handlers
+// Export NextAuth handlers for Next.js App Router
+export const GET = handlers.GET
+export const POST = handlers.POST
