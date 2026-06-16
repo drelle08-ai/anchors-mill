@@ -12,41 +12,47 @@ export const { handlers, auth } = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials: any) {
-        if (!credentials?.username || !credentials?.password) {
-          console.log('Missing credentials')
+        try {
+          if (!credentials?.username || !credentials?.password) {
+            console.error('[AUTH] Missing credentials')
+            return null
+          }
+
+          console.log('[AUTH] Attempting authentication for:', credentials.username)
+
+          const user = await prisma.user.findUnique({
+            where: { username: String(credentials.username) },
+          })
+
+          console.log('[AUTH] User lookup result:', user ? 'found' : 'not found')
+
+          if (!user) {
+            console.error('[AUTH] User not found:', credentials.username)
+            return null
+          }
+
+          const isPasswordValid = await bcrypt.compare(
+            String(credentials.password),
+            user.password
+          )
+
+          console.log('[AUTH] Password validation:', isPasswordValid ? 'valid' : 'invalid')
+
+          if (!isPasswordValid) {
+            console.error('[AUTH] Invalid password')
+            return null
+          }
+
+          console.log('[AUTH] Authentication successful')
+          return {
+            id: user.id.toString(),
+            email: user.email,
+            name: user.fullName,
+            image: null,
+          }
+        } catch (error) {
+          console.error('[AUTH] Exception:', error instanceof Error ? error.message : String(error))
           return null
-        }
-
-        console.log('Attempting to authenticate:', credentials.username)
-
-        const user = await prisma.user.findUnique({
-          where: { username: String(credentials.username) },
-        })
-
-        console.log('User found:', !!user)
-
-        if (!user) {
-          console.log('User not found:', credentials.username)
-          return null
-        }
-
-        const isPasswordValid = await bcrypt.compare(
-          String(credentials.password),
-          user.password
-        )
-
-        console.log('Password valid:', isPasswordValid)
-
-        if (!isPasswordValid) {
-          console.log('Invalid password for user:', credentials.username)
-          return null
-        }
-
-        return {
-          id: user.id.toString(),
-          email: user.email,
-          name: user.fullName,
-          image: null,
         }
       },
     }),
