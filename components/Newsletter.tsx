@@ -16,42 +16,30 @@ export function Newsletter() {
   }
 
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-khaki/10">
-      <div className="max-w-4xl mx-auto text-center space-y-8 animate-slide-up">
-        {/* Content */}
-        <div className="space-y-4">
-          <p className="text-khaki text-xs uppercase tracking-widest font-light">Newsletter</p>
-          <h2 className="text-5xl md:text-6xl font-serif font-light text-primary-50">
-            Stay <span className="text-khaki">Connected</span>
-          </h2>
-          <p className="text-primary-200 max-w-2xl mx-auto font-light">
-            Get early access to new collections, exclusive designs, and insider updates. No spam, just curated content.
-          </p>
-        </div>
+    <section id="contact" className="py-28 px-6 lg:px-10 bg-cream border-t border-ink/15">
+      <div className="max-w-4xl mx-auto text-center space-y-10">
+        <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-khaki">Newsletter</p>
+        <h2>Your next chapter <span className="italic font-normal">starts here.</span></h2>
+        <p className="text-base text-ink/75 max-w-xl mx-auto leading-relaxed">
+          Get new design announcements and brand news. No spam, just curated content.
+        </p>
 
-        {/* Newsletter Form */}
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch max-w-xl mx-auto border-b border-ink">
           <input
             type="email"
             placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="flex-1 px-6 py-4 bg-charcoal text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
             aria-label="Email address"
+            className="flex-1 bg-transparent px-1 py-4 text-base placeholder-ink/40 focus:outline-none"
           />
-          <button
-            type="submit"
-            className="px-8 py-4 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 transition-all duration-300 whitespace-nowrap active:scale-95"
-          >
-            {subscribed ? '✓ Joined' : 'Subscribe'}
+          <button type="submit" className="py-4 px-1 sm:pl-6 text-[11px] font-medium uppercase tracking-[0.22em] hover:text-khaki transition-colors">
+            {subscribed ? 'Joined ✓' : 'Subscribe ↗'}
           </button>
         </form>
 
-        {/* Trust note */}
-        <p className="text-xs text-primary-400 font-light">
-          ✓ We never share your information. Unsubscribe anytime.
-        </p>
+        <p className="text-xs text-ink/55">We never share your information. Unsubscribe anytime.</p>
       </div>
     </section>
   )

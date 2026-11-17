@@ -2,62 +2,31 @@ import { Logo } from './Logo'
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-primary-100 py-16 px-4 sm:px-6 lg:px-8 border-t border-khaki/10">
+    <footer className="bg-ink text-cream px-6 lg:px-10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div className="space-y-4">
-            <div className="text-khaki">
-              <Logo />
-            </div>
-            <p className="text-primary-300 text-sm leading-relaxed font-light">
-              Premium apparel for the modern individual. Crafted in Georgia, celebrated worldwide.
+        <div className="grid md:grid-cols-12 gap-12 mb-16">
+          <div className="md:col-span-6 space-y-6">
+            <Logo tone="light" />
+            <p className="font-serif text-3xl leading-snug max-w-md">
+              Bold apparel for the <span className="italic text-khaki">modern individual.</span>
             </p>
           </div>
-
-          {/* Shop */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-light text-primary-50">Shop</h3>
-            <ul className="space-y-2 text-sm text-primary-300 font-light">
-              <li><a href="/shop" className="hover:text-khaki transition-colors">All Products</a></li>
-              <li><a href="/shop" className="hover:text-khaki transition-colors">Custom DTF</a></li>
-              <li><a href="/shop" className="hover:text-khaki transition-colors">Print-on-Demand</a></li>
-              <li><a href="/shop" className="hover:text-khaki transition-colors">Browse Designs</a></li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-light text-primary-50">Company</h3>
-            <ul className="space-y-2 text-sm text-primary-300 font-light">
-              <li><a href="#about" className="hover:text-khaki transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Sustainability</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Journal</a></li>
-              <li><a href="#contact" className="hover:text-khaki transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Careers</a></li>
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div className="space-y-4">
-            <h3 className="font-serif font-light text-primary-50">Legal</h3>
-            <ul className="space-y-2 text-sm text-primary-300 font-light">
-              <li><a href="#" className="hover:text-khaki transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Terms</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Returns</a></li>
-              <li><a href="#" className="hover:text-khaki transition-colors">Shipping</a></li>
+          <div className="md:col-span-3 md:col-start-8 space-y-4">
+            <h3 className="font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-khaki">Explore</h3>
+            <ul className="space-y-3 text-sm text-cream/80">
+              <li><a href="#collections" className="hover:text-cream">Collections</a></li>
+              <li><a href="#designs" className="hover:text-cream">Selected work</a></li>
+              <li><a href="#about" className="hover:text-cream">Our story</a></li>
+              <li><a href="#contact" className="hover:text-cream">Connect</a></li>
             </ul>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-khaki/10 pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-primary-400 font-light">
-            <p>&copy; 2024 Anchor's Mill. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-khaki transition-colors">Instagram</a>
-              <a href="#" className="hover:text-khaki transition-colors">Twitter</a>
-            </div>
+        <div className="border-t border-cream/15 pt-8 flex flex-col sm:flex-row justify-between gap-4 text-xs text-cream/60">
+          <p>&copy; {new Date().getFullYear()} Anchor&rsquo;s Mill. Made in Georgia.</p>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-cream">Instagram</a>
+            <a href="#" className="hover:text-cream">Twitter</a>
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@ import './globals.css'
 import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
-  title: "Anchor's Mill - Premium Apparel",
-  description: 'Bold, quality-first apparel for the modern professional. Discover our curated collection of t-shirts and custom designs.',
+  title: "Anchor's Mill - Bold Apparel",
+  description: 'Bold apparel for T-shirts, hoodies, sweatshirts, and baby clothing. Made in Georgia.',
 }
 
 export const viewport: Viewport = {
@@ -23,7 +23,7 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#BE185D" />
       </head>
-      <body className="bg-primary-50">
+      <body className="bg-cream">
         <Providers>
           {children}
         </Providers>

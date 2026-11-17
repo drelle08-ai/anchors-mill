@@ -1,8 +1,10 @@
-# Anchor's Mill - Premium Apparel E-Commerce Website
+# Anchor's Mill - Brand & Marketing Website
 
 ## Project Overview
 
-Anchor's Mill is a luxury apparel e-commerce website for a Georgia-based t-shirt and clothing brand. The site features a dark charcoal aesthetic with bold khaki accents, custom DTF (Direct-to-Film) apparel requests, and print-on-demand integration ready.
+Anchor's Mill is a brand and marketing website for a Georgia-based t-shirt and clothing brand. The site is for brand awareness only: it does NOT sell products or take orders on-site. It features a dark charcoal aesthetic with bold khaki accents, a design gallery, brand story, and newsletter sign-up.
+
+**Scope change:** Purchasing (shop, cart, wishlist, custom DTF order form, Printify/Gelato print-on-demand catalog) was removed. `/shop` redirects to `/` (see next.config.js). Sections below that describe the shop, Gelato, or product pricing are historical.
 
 **Live Site:** https://www.anchorsmillclothing.com
 

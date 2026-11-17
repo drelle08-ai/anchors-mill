@@ -2,97 +2,51 @@
 
 import { useState } from 'react'
 import { Logo } from './Logo'
-import { Heart, ShoppingBag, Menu, X } from 'lucide-react'
+
+const NAV_LINKS = [
+  { href: '#collections', label: 'Collections' },
+  { href: '#designs', label: 'Selected work' },
+  { href: '#about', label: 'Our story' },
+]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 bg-charcoal/95 backdrop-blur supports-[backdrop-filter]:bg-charcoal/60 border-b border-khaki/10">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <a href="/" className="flex-shrink-0 hover:opacity-80 transition-opacity">
+    <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="flex items-center justify-between h-24">
+          <a href="/" aria-label="Anchor's Mill home" className="hover:opacity-80 transition-opacity">
             <Logo />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <a
-              href="/shop"
-              className="text-primary-200 font-light hover:text-khaki transition-colors"
-            >
-              Shop
-            </a>
-            <a
-              href="#about"
-              className="text-primary-200 font-light hover:text-khaki transition-colors"
-            >
-              About
-            </a>
-            <a
-              href="#contact"
-              className="text-primary-200 font-light hover:text-khaki transition-colors"
-            >
-              Contact
+          <div className="hidden md:flex items-center gap-10">
+            {NAV_LINKS.map((link) => (
+              <a key={link.href} href={link.href} className="text-[11px] font-medium uppercase tracking-[0.22em] text-ink hover:text-khaki transition-colors">
+                {link.label}
+              </a>
+            ))}
+            <a href="#contact" className="inline-flex items-center gap-2 border border-ink px-5 py-3 text-[11px] font-medium uppercase tracking-[0.22em] text-ink hover:bg-ink hover:text-cream transition-colors">
+              Connect <span aria-hidden="true">&#8599;</span>
             </a>
           </div>
 
-          {/* Right Actions */}
-          <div className="flex items-center gap-4">
-            <button
-              className="p-2 hover:bg-khaki/10 rounded-lg transition-colors"
-              aria-label="Wishlist"
-              title="Wishlist"
-            >
-              <Heart size={20} className="text-khaki" />
-            </button>
-            <button
-              className="p-2 hover:bg-khaki/10 rounded-lg transition-colors relative"
-              aria-label="Shopping bag"
-              title="Shopping bag"
-            >
-              <ShoppingBag size={20} className="text-khaki" />
-              <span className="absolute top-1 right-1 w-5 h-5 bg-khaki text-charcoal text-xs rounded-full flex items-center justify-center font-bold">
-                0
-              </span>
-            </button>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              className="md:hidden p-2 hover:bg-khaki/10 rounded-lg transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={20} className="text-khaki" /> : <Menu size={20} className="text-khaki" />}
-            </button>
-          </div>
+          <button
+            className="md:hidden text-[11px] font-medium uppercase tracking-[0.22em] border border-ink px-4 py-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? 'Close' : 'Menu +'}
+          </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden pb-4 animate-slide-up">
-            <a
-              href="/shop"
-              className="block py-3 text-primary-200 font-light hover:text-khaki transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Shop
-            </a>
-            <a
-              href="#about"
-              className="block py-3 text-primary-200 font-light hover:text-khaki transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#contact"
-              className="block py-3 text-primary-200 font-light hover:text-khaki transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Contact
-            </a>
+          <div className="md:hidden pb-6 border-t border-ink/15">
+            {[...NAV_LINKS, { href: '#contact', label: 'Connect' }].map((link) => (
+              <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="block py-4 text-[11px] font-medium uppercase tracking-[0.22em] border-b border-ink/10">
+                {link.label}
+              </a>
+            ))}
           </div>
         )}
       </nav>

@@ -1,7 +1,7 @@
 {
   "name": "anchors-mill",
   "version": "1.0.0",
-  "description": "Premium apparel e-commerce website",
+  "description": "Anchor's Mill brand and marketing website",
   "private": true,
   "scripts": {
     "dev": "next dev",

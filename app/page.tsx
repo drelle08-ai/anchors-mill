@@ -1,19 +1,19 @@
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { FeaturedProducts } from '@/components/FeaturedProducts'
+import { Collections } from '@/components/Collections'
+import { DesignGallery } from '@/components/DesignGallery'
 import { About } from '@/components/About'
-import { Testimonials } from '@/components/Testimonials'
 import { Newsletter } from '@/components/Newsletter'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-charcoal">
+    <main className="min-h-screen bg-cream">
       <Header />
       <Hero />
-      <FeaturedProducts />
+      <Collections />
+      <DesignGallery />
       <About />
-      <Testimonials />
       <Newsletter />
       <Footer />
     </main>

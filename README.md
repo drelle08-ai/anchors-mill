@@ -13,7 +13,7 @@ A modern, production-grade e-commerce website for Anchor's Mill, featuring bold 
 
 - ✨ **Bold, Modern Design** - Neobrutalist aesthetic with high-contrast elements
 - 📱 **Fully Responsive** - Mobile-first design (375px → 1440px+)
-- 🛍️ **E-Commerce Ready** - Product showcase, wishlist, shopping cart
+- 🎨 **Brand Showcase** - Design gallery, brand story, and newsletter sign-up (no in-site purchasing)
 - ⚡ **Performance** - Next.js 14, optimized images, lazy loading
 - ♿ **Accessible** - WCAG AAA compliance, semantic HTML, focus states
 - 🎨 **Premium Animations** - Smooth, purposeful transitions and micro-interactions
