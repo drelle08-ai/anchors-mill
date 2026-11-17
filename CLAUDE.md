@@ -157,10 +157,6 @@ npm run dev
 
 ## Environment Variables
 
-**NEXT_PUBLIC_GELATO_API_KEY** - Your Gelato API credentials (format: `api_key:password`)
-- Added to Vercel production environment
-- Used by PrintOnDemand component to fetch real products
-- Must be added to `.env.local` for local development
 
 ## Accessibility
 
