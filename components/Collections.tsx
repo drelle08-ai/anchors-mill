@@ -19,7 +19,7 @@ const COLLECTIONS = [
   },
   {
     id: 'baby',
-    name: 'Baby Clothing',
+    name: 'Babies\' Clothing',
     blurb: 'Little ones, big statements.',
     image: null,
   },

@@ -30,7 +30,7 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 border-t border-white/15 z-10">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex justify-between text-[10px] uppercase tracking-[0.25em] text-white/70">
           <span>Georgia</span>
-          <span className="hidden sm:inline">T-shirts &middot; Hoodies &middot; Sweatshirts &middot; Baby</span>
+          <span className="hidden sm:inline">T-shirts &middot; Hoodies &middot; Sweatshirts &middot; Babies</span>
         </div>
       </div>
     </section>

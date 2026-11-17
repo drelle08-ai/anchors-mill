@@ -4,7 +4,7 @@ import { Providers } from '@/components/Providers'
 
 export const metadata: Metadata = {
   title: "Anchor's Mill - Bold Apparel",
-  description: 'Bold apparel for T-shirts, hoodies, sweatshirts, and baby clothing. Made in Georgia.',
+  description: "Bold apparel for T-shirts, hoodies, sweatshirts, and babies' clothing. Made in Georgia.",
 }
 
 export const viewport: Viewport = {
