@@ -24,14 +24,14 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-charcoal">
       {/* Header */}
-      <header className="bg-gray-900/50 border-b border-khaki/20 sticky top-0 z-50">
+      <header className="bg-gray-900/50 border-b border-cobalt/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <h1 className="text-2xl font-serif font-light text-primary-50">
+          <h1 className="text-2xl font-display font-light text-primary-50">
             Design Portal
           </h1>
           <button
             onClick={() => signOut()}
-            className="px-4 py-2 text-khaki hover:text-accent-400 font-light text-sm uppercase tracking-widest transition-colors"
+            className="px-4 py-2 text-cobalt hover:text-cobalt-dark font-light text-sm uppercase tracking-widest transition-colors"
           >
             Sign Out
           </button>
@@ -43,7 +43,7 @@ export default function DashboardPage() {
         <div className="space-y-8">
           {/* Welcome */}
           <div>
-            <h2 className="text-3xl font-serif font-light text-primary-50 mb-4">
+            <h2 className="text-3xl font-display font-light text-primary-50 mb-4">
               Welcome, {session?.user?.name || 'User'}!
             </h2>
             <p className="text-primary-300 font-light">
@@ -55,10 +55,10 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <a
               href="/dashboard/projects"
-              className="bg-gray-900/50 border border-khaki/20 p-6 hover:border-khaki transition-colors cursor-pointer group"
+              className="bg-gray-900/50 border border-cobalt/20 p-6 hover:border-cobalt transition-colors cursor-pointer group"
             >
               <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">📁</div>
-              <h3 className="text-xl font-serif font-light text-primary-50 mb-2 group-hover:text-khaki transition-colors">
+              <h3 className="text-xl font-display font-light text-primary-50 mb-2 group-hover:text-cobalt transition-colors">
                 Projects
               </h3>
               <p className="text-primary-400 text-sm font-light">
@@ -66,9 +66,9 @@ export default function DashboardPage() {
               </p>
             </a>
 
-            <div className="bg-gray-900/50 border border-khaki/20 p-6 opacity-50">
+            <div className="bg-gray-900/50 border border-cobalt/20 p-6 opacity-50">
               <div className="text-4xl mb-3">🎨</div>
-              <h3 className="text-xl font-serif font-light text-primary-50 mb-2">
+              <h3 className="text-xl font-display font-light text-primary-50 mb-2">
                 Designs
               </h3>
               <p className="text-primary-400 text-sm font-light">
@@ -76,9 +76,9 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            <div className="bg-gray-900/50 border border-khaki/20 p-6 opacity-50">
+            <div className="bg-gray-900/50 border border-cobalt/20 p-6 opacity-50">
               <div className="text-4xl mb-3">💬</div>
-              <h3 className="text-xl font-serif font-light text-primary-50 mb-2">
+              <h3 className="text-xl font-display font-light text-primary-50 mb-2">
                 Feedback
               </h3>
               <p className="text-primary-400 text-sm font-light">
@@ -88,8 +88,8 @@ export default function DashboardPage() {
           </div>
 
           {/* Quick Info */}
-          <div className="bg-gradient-to-r from-khaki/10 to-transparent border border-khaki/20 p-6 rounded">
-            <h3 className="text-lg font-serif font-light text-primary-50 mb-2">Phase 2 Live ✨</h3>
+          <div className="bg-gradient-to-r from-cobalt/10 to-transparent border border-cobalt/20 p-6 rounded">
+            <h3 className="text-lg font-display font-light text-primary-50 mb-2">Phase 2 Live ✨</h3>
             <p className="text-primary-300 font-light text-sm">
               Project management is now live! Create, edit, and organize your design projects.
               Upcoming: image uploads, feedback system, and color palette collaboration.

@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#BE185D" />
+        <meta name="theme-color" content="#0047AB" />
       </head>
-      <body className="bg-cream">
+      <body className="bg-white">
         <Providers>
           {children}
         </Providers>

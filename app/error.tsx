@@ -10,7 +10,7 @@ export default function Error({
   return (
     <div className="min-h-screen bg-charcoal flex items-center justify-center px-4">
       <div className="w-full max-w-md text-center">
-        <h1 className="text-4xl font-serif font-light text-primary-50 mb-4">
+        <h1 className="text-4xl font-display font-light text-primary-50 mb-4">
           Something went wrong
         </h1>
         <p className="text-primary-300 font-light mb-8">
@@ -18,7 +18,7 @@ export default function Error({
         </p>
         <button
           onClick={() => reset()}
-          className="px-6 py-3 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 transition-all"
+          className="px-6 py-3 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark transition-all"
         >
           Try Again
         </button>

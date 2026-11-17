@@ -106,10 +106,10 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen bg-charcoal">
       {/* Header */}
-      <div className="bg-gray-900/50 border-b border-khaki/20 sticky top-0 z-50">
+      <div className="bg-gray-900/50 border-b border-cobalt/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-serif font-light text-primary-50">
+            <h1 className="text-3xl font-display font-light text-primary-50">
               Projects
             </h1>
             <p className="text-primary-400 font-light text-sm mt-1">
@@ -118,7 +118,7 @@ export default function ProjectsPage() {
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="px-6 py-2 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 transition-all active:scale-95"
+            className="px-6 py-2 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark transition-all active:scale-95"
           >
             {showForm ? 'Cancel' : 'New Project'}
           </button>
@@ -137,7 +137,7 @@ export default function ProjectsPage() {
         {showForm && (
           <form
             onSubmit={handleSubmit}
-            className="mb-12 bg-gray-900/50 border border-khaki/20 p-8 space-y-4"
+            className="mb-12 bg-gray-900/50 border border-cobalt/20 p-8 space-y-4"
           >
             <div>
               <label className="block text-primary-200 font-light text-sm uppercase tracking-widest mb-2">
@@ -149,7 +149,7 @@ export default function ProjectsPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
                 placeholder="e.g., Summer Collection Mockups"
                 required
               />
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
                 placeholder="Describe the purpose of this project..."
                 rows={3}
               />
@@ -173,7 +173,7 @@ export default function ProjectsPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full px-6 py-3 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 disabled:opacity-50 transition-all active:scale-95"
+              className="w-full px-6 py-3 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark disabled:opacity-50 transition-all active:scale-95"
             >
               {submitting ? 'Creating...' : 'Create Project'}
             </button>
@@ -194,9 +194,9 @@ export default function ProjectsPage() {
                 key={project.id}
                 href={`/dashboard/projects/${project.id}`}
               >
-                <div className="bg-gray-900/50 border border-khaki/20 p-6 hover:border-khaki transition-all cursor-pointer h-full flex flex-col justify-between group">
+                <div className="bg-gray-900/50 border border-cobalt/20 p-6 hover:border-cobalt transition-all cursor-pointer h-full flex flex-col justify-between group">
                   <div>
-                    <h3 className="text-xl font-serif font-light text-primary-50 mb-2 group-hover:text-khaki transition-colors">
+                    <h3 className="text-xl font-display font-light text-primary-50 mb-2 group-hover:text-cobalt transition-colors">
                       {project.name}
                     </h3>
                     <p className="text-primary-300 font-light text-sm mb-4 line-clamp-3">
@@ -204,7 +204,7 @@ export default function ProjectsPage() {
                     </p>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-khaki/10">
+                  <div className="flex items-center justify-between pt-4 border-t border-cobalt/10">
                     <span className="text-xs text-primary-400 font-light">
                       {new Date(project.createdAt).toLocaleDateString()}
                     </span>

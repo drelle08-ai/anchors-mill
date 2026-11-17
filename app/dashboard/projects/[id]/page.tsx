@@ -97,7 +97,7 @@ export default function ProjectDetailPage() {
           <p className="text-primary-400 font-light">Project not found</p>
           <Link
             href="/dashboard/projects"
-            className="text-khaki hover:text-accent-400 font-light mt-4 inline-block"
+            className="text-cobalt hover:text-cobalt-dark font-light mt-4 inline-block"
           >
             ← Back to Projects
           </Link>
@@ -109,15 +109,15 @@ export default function ProjectDetailPage() {
   return (
     <div className="min-h-screen bg-charcoal">
       {/* Header */}
-      <div className="bg-gray-900/50 border-b border-khaki/20 sticky top-0 z-50">
+      <div className="bg-gray-900/50 border-b border-cobalt/20 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-6">
           <Link
             href="/dashboard/projects"
-            className="text-khaki hover:text-accent-400 font-light text-sm uppercase tracking-widest mb-4 inline-block transition-colors"
+            className="text-cobalt hover:text-cobalt-dark font-light text-sm uppercase tracking-widest mb-4 inline-block transition-colors"
           >
             ← Back to Projects
           </Link>
-          <h1 className="text-3xl font-serif font-light text-primary-50">
+          <h1 className="text-3xl font-display font-light text-primary-50">
             {project.name}
           </h1>
           <p className="text-primary-400 font-light text-sm mt-2">
@@ -136,7 +136,7 @@ export default function ProjectDetailPage() {
 
         {/* Project Info */}
         {!isEditing ? (
-          <div className="bg-gray-900/50 border border-khaki/20 p-8 mb-8">
+          <div className="bg-gray-900/50 border border-cobalt/20 p-8 mb-8">
             <div className="mb-6">
               <h2 className="text-sm uppercase tracking-widest text-primary-400 font-light mb-2">
                 Description
@@ -146,12 +146,12 @@ export default function ProjectDetailPage() {
               </p>
             </div>
 
-            <div className="mb-6 pt-6 border-t border-khaki/20">
+            <div className="mb-6 pt-6 border-t border-cobalt/20">
               <h2 className="text-sm uppercase tracking-widest text-primary-400 font-light mb-2">
                 Status
               </h2>
               <p className="text-primary-200 font-light">
-                <span className="inline-block px-3 py-1 bg-khaki/10 border border-khaki/30 text-khaki text-sm">
+                <span className="inline-block px-3 py-1 bg-cobalt/10 border border-cobalt/30 text-cobalt text-sm">
                   {project.status}
                 </span>
               </p>
@@ -159,7 +159,7 @@ export default function ProjectDetailPage() {
 
             <button
               onClick={() => setIsEditing(true)}
-              className="px-6 py-2 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 transition-all active:scale-95"
+              className="px-6 py-2 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark transition-all active:scale-95"
             >
               Edit Project
             </button>
@@ -167,7 +167,7 @@ export default function ProjectDetailPage() {
         ) : (
           <form
             onSubmit={handleUpdate}
-            className="bg-gray-900/50 border border-khaki/20 p-8 mb-8 space-y-4"
+            className="bg-gray-900/50 border border-cobalt/20 p-8 mb-8 space-y-4"
           >
             <div>
               <label className="block text-primary-200 font-light text-sm uppercase tracking-widest mb-2">
@@ -179,7 +179,7 @@ export default function ProjectDetailPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, name: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
                 required
               />
             </div>
@@ -193,7 +193,7 @@ export default function ProjectDetailPage() {
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
-                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+                className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
                 rows={5}
               />
             </div>
@@ -202,14 +202,14 @@ export default function ProjectDetailPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="flex-1 px-6 py-3 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 disabled:opacity-50 transition-all active:scale-95"
+                className="flex-1 px-6 py-3 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark disabled:opacity-50 transition-all active:scale-95"
               >
                 {submitting ? 'Saving...' : 'Save Changes'}
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="flex-1 px-6 py-3 border border-khaki/20 text-primary-200 font-light uppercase tracking-widest hover:border-khaki transition-all"
+                className="flex-1 px-6 py-3 border border-cobalt/20 text-primary-200 font-light uppercase tracking-widest hover:border-cobalt transition-all"
               >
                 Cancel
               </button>
@@ -218,8 +218,8 @@ export default function ProjectDetailPage() {
         )}
 
         {/* Images Section - Coming Soon */}
-        <div className="bg-gray-900/50 border border-khaki/20 p-8">
-          <h2 className="text-xl font-serif font-light text-primary-50 mb-4">
+        <div className="bg-gray-900/50 border border-cobalt/20 p-8">
+          <h2 className="text-xl font-display font-light text-primary-50 mb-4">
             Design Images
           </h2>
           <p className="text-primary-400 font-light">

@@ -16,15 +16,15 @@ export function Newsletter() {
   }
 
   return (
-    <section id="contact" className="py-28 px-6 lg:px-10 bg-cream border-t border-ink/15">
+    <section id="contact" className="py-28 px-6 lg:px-10 bg-white border-t border-charcoal/15">
       <div className="max-w-4xl mx-auto text-center space-y-10">
-        <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-khaki">Newsletter</p>
-        <h2>Your next chapter <span className="italic font-normal">starts here.</span></h2>
-        <p className="text-base text-ink/75 max-w-xl mx-auto leading-relaxed">
+        <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-cobalt">Newsletter</p>
+        <h2>Your next chapter <span className="font-normal">starts here.</span></h2>
+        <p className="text-base text-charcoal/75 max-w-xl mx-auto leading-relaxed">
           Get new design announcements and brand news. No spam, just curated content.
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch max-w-xl mx-auto border-b border-ink">
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-stretch max-w-xl mx-auto border-b border-charcoal">
           <input
             type="email"
             placeholder="Your email"
@@ -32,14 +32,14 @@ export function Newsletter() {
             onChange={(e) => setEmail(e.target.value)}
             required
             aria-label="Email address"
-            className="flex-1 bg-transparent px-1 py-4 text-base placeholder-ink/40 focus:outline-none"
+            className="flex-1 bg-transparent px-1 py-4 text-base placeholder-charcoal/40 focus:outline-none"
           />
-          <button type="submit" className="py-4 px-1 sm:pl-6 text-[11px] font-medium uppercase tracking-[0.22em] hover:text-khaki transition-colors">
+          <button type="submit" className="py-4 px-1 sm:pl-6 text-[11px] font-medium uppercase tracking-[0.22em] hover:text-cobalt transition-colors">
             {subscribed ? 'Joined ✓' : 'Subscribe ↗'}
           </button>
         </form>
 
-        <p className="text-xs text-ink/55">We never share your information. Unsubscribe anytime.</p>
+        <p className="text-xs text-charcoal/55">We never share your information. Unsubscribe anytime.</p>
       </div>
     </section>
   )

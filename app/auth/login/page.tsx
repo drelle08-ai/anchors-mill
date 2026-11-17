@@ -49,7 +49,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         {/* Logo/Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-serif font-light text-primary-50 mb-2">
+          <h1 className="text-4xl font-display font-light text-primary-50 mb-2">
             Design Portal
           </h1>
           <p className="text-primary-300 font-light">
@@ -60,7 +60,7 @@ export default function LoginPage() {
         {/* Login Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-gray-900/50 border border-khaki/20 p-8 space-y-6"
+          className="bg-gray-900/50 border border-cobalt/20 p-8 space-y-6"
         >
           {error && (
             <div className="bg-red-900/20 border border-red-500/30 p-4 rounded text-red-200 text-sm font-light">
@@ -77,7 +77,7 @@ export default function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+              className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
               placeholder="your username"
               required
             />
@@ -92,7 +92,7 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-khaki/20 focus:border-khaki focus:outline-none transition-all font-light"
+              className="w-full px-4 py-3 bg-gray-900/50 text-primary-100 placeholder-primary-400 border border-cobalt/20 focus:border-cobalt focus:outline-none transition-all font-light"
               placeholder="your password"
               required
             />
@@ -102,7 +102,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full px-6 py-3 bg-khaki text-charcoal font-light uppercase tracking-widest hover:bg-accent-400 disabled:opacity-50 transition-all duration-300 active:scale-95"
+            className="w-full px-6 py-3 bg-cobalt text-white font-light uppercase tracking-widest hover:bg-cobalt-dark disabled:opacity-50 transition-all duration-300 active:scale-95"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
