@@ -15,7 +15,6 @@ export function Footer() {
             <h3 className="font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-cobalt-light">Explore</h3>
             <ul className="space-y-3 text-sm text-white/80">
               <li><a href="#collections" className="hover:text-white">Collections</a></li>
-              <li><a href="#designs" className="hover:text-white">Selected work</a></li>
               <li><a href="#about" className="hover:text-white">Our story</a></li>
               <li><a href="#contact" className="hover:text-white">Connect</a></li>
             </ul>

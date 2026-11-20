@@ -1,29 +1,6 @@
-const COLLECTIONS = [
-  {
-    id: 'tshirts',
-    name: 'T-Shirts',
-    blurb: 'Everyday essentials with bold graphics.',
-    image: 'https://images.squarespace-cdn.com/content/v1/6936df470b902d320ef93d31/4e801ddb-58f4-418c-85f1-1d2a23175c3a/JesusOEtsirt.png',
-  },
-  {
-    id: 'hoodies',
-    name: 'Hoodies',
-    blurb: 'Cozy layers with the Anchor’s Mill look.',
-    image: 'https://images.squarespace-cdn.com/content/v1/6936df470b902d320ef93d31/20f96128-1fef-484b-907b-1e12e6786c65/JesusOverEverythinghoodie+Medium.jpeg',
-  },
-  {
-    id: 'sweatshirts',
-    name: 'Sweatshirts',
-    blurb: 'Relaxed fits built for everyday wear.',
-    image: '/products/sweatshirt-pjs-cocoa.webp',
-  },
-  {
-    id: 'baby',
-    name: 'Babies\' Clothing',
-    blurb: 'Little ones, big statements.',
-    image: '/products/babies-onesie-emmett.webp',
-  },
-]
+import { CATEGORIES } from '@/lib/products'
+
+const COLLECTIONS = CATEGORIES.map((c) => ({ id: c.slug, name: c.name, blurb: c.blurb, image: c.cover }))
 
 export function Collections() {
   return (
@@ -44,7 +21,7 @@ export function Collections() {
             <a
               key={item.id}
               id={item.id}
-              href="#contact"
+              href={`/collections/${item.id}`}
               className="group relative block aspect-[3/4] overflow-hidden bg-charcoal"
             >
               {item.image ? (

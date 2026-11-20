@@ -5,7 +5,6 @@ import { Logo } from './Logo'
 
 const NAV_LINKS = [
   { href: '#collections', label: 'Collections' },
-  { href: '#designs', label: 'Selected work' },
   { href: '#about', label: 'Our story' },
 ]
 
