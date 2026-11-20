@@ -15,13 +15,13 @@ const COLLECTIONS = [
     id: 'sweatshirts',
     name: 'Sweatshirts',
     blurb: 'Relaxed fits built for everyday wear.',
-    image: null,
+    image: '/products/sweatshirt-pjs-cocoa.webp',
   },
   {
     id: 'baby',
     name: 'Babies\' Clothing',
     blurb: 'Little ones, big statements.',
-    image: null,
+    image: '/products/babies-onesie-emmett.webp',
   },
 ]
 
