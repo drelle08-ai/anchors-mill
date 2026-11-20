@@ -4,8 +4,9 @@ import { useState } from 'react'
 import { Logo } from './Logo'
 
 const NAV_LINKS = [
-  { href: '#collections', label: 'Collections' },
-  { href: '#about', label: 'Our story' },
+  { href: '/#collections', label: 'Collections' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/#about', label: 'Our story' },
 ]
 
 export function Header() {

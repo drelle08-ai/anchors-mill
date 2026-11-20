@@ -14,9 +14,10 @@ export function Footer() {
           <div className="md:col-span-3 md:col-start-8 space-y-4">
             <h3 className="font-sans text-[11px] font-medium uppercase tracking-[0.25em] text-cobalt-light">Explore</h3>
             <ul className="space-y-3 text-sm text-white/80">
-              <li><a href="#collections" className="hover:text-white">Collections</a></li>
-              <li><a href="#about" className="hover:text-white">Our story</a></li>
-              <li><a href="#contact" className="hover:text-white">Connect</a></li>
+              <li><a href="/pricing" className="hover:text-white">Pricing</a></li>
+              <li><a href="/#collections" className="hover:text-white">Collections</a></li>
+              <li><a href="/#about" className="hover:text-white">Our story</a></li>
+              <li><a href="/#contact" className="hover:text-white">Connect</a></li>
             </ul>
           </div>
         </div>
