@@ -27,7 +27,6 @@ export const CATEGORIES: Category[] = [
       { id: 'rob-hell', name: 'Rob Hell T-Shirt', image: `${SQ}/f42cec8e-ddf1-45c8-bd83-8ccb6aab32c3/Rob+hell-+-+Front.png` },
       { id: 'blah-tee', name: 'Blah! Blah! Blah! T-Shirt', image: '/products/tshirt-blah.webp' },
       { id: 'faith-tee', name: 'Faith, Hope, Love T-Shirt', image: '/products/tshirt-faith-hope-love.webp' },
-      { id: 'siblings-tee', name: 'Big Brother & Little Sister Tees', image: '/products/tshirt-big-little-siblings.webp' },
     ],
   },
   {
@@ -58,6 +57,7 @@ export const CATEGORIES: Category[] = [
     intro: 'Little ones, big statements. Soft, simple pieces for the youngest members of the family.',
     products: [
       { id: 'emmett-onesie', name: 'Personalized Baby Bodysuit', image: '/products/babies-onesie-emmett.webp' },
+      { id: 'siblings-tee', name: 'Big Brother & Little Sister Tees', image: '/products/tshirt-big-little-siblings.webp' },
     ],
   },
 ]
