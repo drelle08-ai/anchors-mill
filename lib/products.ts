@@ -51,7 +51,7 @@ export const CATEGORIES: Category[] = [
   },
   {
     slug: 'babies',
-    name: 'Babies’ Clothing',
+    name: 'Infants & Babies',
     blurb: 'Little ones, big statements.',
     cover: '/products/babies-onesie-emmett.webp',
     intro: 'Little ones, big statements. Soft, simple pieces for the youngest members of the family.',
